@@ -2,7 +2,7 @@
 
 
 
-#  Redux-form-walkthrough
+#  Redux-form-complete
 
 This is a redux-form demo that has been created with React, Typescript, Axios, Postgres and Mui components 
 
