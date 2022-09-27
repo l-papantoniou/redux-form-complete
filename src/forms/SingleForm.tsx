@@ -37,24 +37,38 @@ export const ReduxForm: React.FC<
   //required fields validation
   const required = (value) => (value ? undefined : "Required");
 
+  console.log(schema);
   return (
     <Fragment>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={schema.style}>
-          {schema.elements.map((element) => (
-            <Field
-              label={element.label}
-              name={element.name}
-              type={element.type}
-              validate={required}
-              component={renderField}
-              {...{
-                customProps: element.properties.options,
-              }}
-            />
-          ))}
-        </div>
-
+        {schema.property && (
+          <div style={schema.style}>
+            {schema.elements.map((element) => (
+              <Field
+                label={element.label}
+                name={element.name}
+                type={element.type}
+                validate={required}
+                component={renderField}
+              />
+            ))}
+          </div>
+        )}{" "}
+        {!schema.property && (
+          <div style={schema.style}>
+            {schema.elements.map((element) => (
+              <Field
+                label={element.label}
+                name={element.name}
+                type={element.type}
+                component={renderField}
+                {...{
+                  customProps: element.properties.options,
+                }}
+              />
+            ))}
+          </div>
+        )}
         {errorMessage && (
           <Alert severity="error">
             <AlertTitle>Error</AlertTitle>
