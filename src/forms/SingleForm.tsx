@@ -32,7 +32,7 @@ export const ReduxForm: React.FC<
     dispatch(employeeActions.clearUpdateEmployee());
     dispatch(companyActions.clearLoadCompany());
     dispatch(companyActions.clearEmployeeCompanyId());
-    navigate("/");
+    navigate(-1);
   };
   //required fields validation
   const required = (value) => (value ? undefined : "Required");
