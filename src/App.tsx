@@ -158,7 +158,16 @@ const App = () => {
               }
             />
 
-            <Route path="*" element={<NotFoundPage />} />
+            <Route
+              path="*"
+              element={
+                isAuthenticated ? (
+                  <NotFoundPage setAuth={setAuth} />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
           </Routes>
         </Container>
       </Fragment>

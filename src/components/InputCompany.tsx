@@ -13,7 +13,9 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
-export const InputCompany = (setAuth) => {
+export const InputCompany: React.FC<{ setAuth: (boolean) => void }> = (
+  setAuth
+) => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();

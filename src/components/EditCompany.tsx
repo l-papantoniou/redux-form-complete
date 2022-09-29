@@ -17,7 +17,9 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
-export const EditCompany = (setAuth) => {
+export const EditCompany: React.FC<{ setAuth: (boolean) => void }> = (
+  setAuth
+) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const params = useParams();

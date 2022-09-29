@@ -17,7 +17,9 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { getUnemployeed } from "../reducers/EmployeeReducer";
 import { RootState } from "../store";
 
-const ListEmployees = ({ setAuth }) => {
+const ListUnemployeed: React.FC<{ setAuth: (boolean) => void }> = ({
+  setAuth,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -121,4 +123,4 @@ const ListEmployees = ({ setAuth }) => {
   );
 };
 
-export default ListEmployees;
+export default ListUnemployeed;

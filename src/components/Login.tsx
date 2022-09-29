@@ -19,7 +19,7 @@ const client = axios.create({
   headers: { token: localStorage.token },
 });
 
-const Login = ({ setAuth }) => {
+const Login: React.FC<{ setAuth: (boolean) => void }> = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",

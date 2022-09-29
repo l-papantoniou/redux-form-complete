@@ -28,12 +28,14 @@ import { RootState } from "../store";
 import { deleteEmployeeCompany } from "../reducers/CompanyReducer";
 import SearchFormSchema from "../forms/Schemas/SearchFormSchema";
 import { SearchInterface } from "../interfaces/SearchInterface";
-import { submit, isPristine, reset } from "redux-form";
+import { submit, reset } from "redux-form";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import AdvancedSearchFormSchema from "../forms/Schemas/AdvancedSearchFormSchema";
 import FormEmployee from "../forms/FormEmployee";
 
-const ListEmployees = ({ setAuth }) => {
+const ListEmployees: React.FC<{ setAuth: (boolean) => void }> = ({
+  setAuth,
+}) => {
   const [page, setPage] = useState(1);
   const [advanced, setAdvanced] = useState(false);
 

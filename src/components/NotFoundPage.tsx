@@ -3,7 +3,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import Grid from "@material-ui/core/Grid";
 import { useNavigate } from "react-router-dom";
 
-export default function Error() {
+const Error: React.FC<{ setAuth: (boolean) => void }> = (setAuth) => {
   const navigate = useNavigate();
 
   return (
@@ -38,4 +38,6 @@ export default function Error() {
       </Container>
     </Box>
   );
-}
+};
+
+export default Error;

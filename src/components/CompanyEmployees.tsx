@@ -28,7 +28,10 @@ import {
   getCompaniesEmployees,
 } from "../reducers/CompanyReducer";
 
-const CompanyEmployees = ({ setAuth }, id) => {
+const CompanyEmployees: React.FC<{ setAuth: (boolean) => void }> = (
+  { setAuth },
+  id
+) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();

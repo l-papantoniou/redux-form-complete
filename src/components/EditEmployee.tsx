@@ -26,7 +26,9 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
-export const EditEmployee = (setAuth) => {
+export const EditEmployee: React.FC<{ setAuth: (boolean) => void }> = (
+  setAuth
+) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const params = useParams();

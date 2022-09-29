@@ -28,7 +28,9 @@ import {
 } from "../reducers/CompanyReducer";
 import CompanyEmployees from "./CompanyEmployees";
 
-const ListCompanies = ({ setAuth }) => {
+const ListCompanies: React.FC<{ setAuth: (boolean) => void }> = ({
+  setAuth,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [page, setPage] = useState(1);

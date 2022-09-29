@@ -18,7 +18,9 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
-export const Recruitment = (setAuth) => {
+export const Recruitment: React.FC<{ setAuth: (boolean) => void }> = (
+  setAuth
+) => {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();

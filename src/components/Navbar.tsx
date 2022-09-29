@@ -11,7 +11,9 @@ import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
 import WorkOffIcon from "@mui/icons-material/WorkOff";
 
-export default function ButtonAppBar({ setAuth }) {
+const ButtonAppBar: React.FC<{ setAuth: (boolean) => void }> = ({
+  setAuth,
+}) => {
   const navigate = useNavigate();
 
   //logout button function
@@ -82,4 +84,6 @@ export default function ButtonAppBar({ setAuth }) {
       </AppBar>
     </Box>
   );
-}
+};
+
+export default ButtonAppBar;
