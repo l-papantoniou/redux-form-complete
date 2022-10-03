@@ -41,34 +41,20 @@ export const ReduxForm: React.FC<
   return (
     <Fragment>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {schema.property && (
-          <div style={schema.style}>
-            {schema.elements.map((element) => (
-              <Field
-                label={element.label}
-                name={element.name}
-                type={element.type}
-                validate={required}
-                component={renderField}
-              />
-            ))}
-          </div>
-        )}{" "}
-        {!schema.property && (
-          <div style={schema.style}>
-            {schema.elements.map((element) => (
-              <Field
-                label={element.label}
-                name={element.name}
-                type={element.type}
-                component={renderField}
-                {...{
-                  customProps: element.properties.options,
-                }}
-              />
-            ))}
-          </div>
-        )}
+        <div style={schema.style}>
+          {schema.elements.map((element) => (
+            <Field
+              label={element.label}
+              name={element.name}
+              type={element.type}
+              component={renderField}
+              {...{
+                customProps: element.properties.options,
+              }}
+            />
+          ))}
+        </div>
+
         {errorMessage && (
           <Alert severity="error">
             <AlertTitle>Error</AlertTitle>

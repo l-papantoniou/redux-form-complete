@@ -1,5 +1,9 @@
 import axios from "axios";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createEntityAdapter,
+  createSlice,
+} from "@reduxjs/toolkit";
 import { EmployeeInterface } from "../interfaces/EmpoyeeInterface";
 import { SearchInterface } from "../interfaces/SearchInterface";
 
@@ -18,30 +22,45 @@ export const getEmployees = createAsyncThunk(
 export const searchEmployee = createAsyncThunk(
   "searchEmployee/fetch",
   async (entity: SearchInterface) => {
-    const requestUrl = `http://localhost:5000/employee?firstname=${entity.firstname}&lastname=${entity.lastname}`;
-    const response = await axios.get(requestUrl);
-    console.log(response);
-    return response;
+    if (!entity.firstname && entity.lastname) {
+      const requestUrl = `http://localhost:5000/employee?lastname=${entity.lastname}`;
+      const response = await axios.get(requestUrl);
+      return response;
+    }
+    if (entity.firstname && !entity.lastname) {
+      const requestUrl = `http://localhost:5000/employee?firstname=${entity.firstname}`;
+      const response = await axios.get(requestUrl);
+      return response;
+    }
+
+    if (entity.firstname && entity.lastname) {
+      const requestUrl = `http://localhost:5000/employee?firstname=${entity.firstname}&&lastname=${entity.lastname}`;
+      const response = await axios.get(requestUrl);
+      return response;
+    }
   }
 );
+
+// //advanced search an employee
+// export const advancedSearchEmployee = createAsyncThunk(
+//   "searchEmployee/fetch",
+//   async (entity: SearchInterface) => {
+//     const requestUrl = `http://localhost:5000/employee?firstname=${entity.firstname}&lastname=${entity.lastname}&afm=${entity.afm}`;
+//     const response = await axios.get(requestUrl);
+//     console.log(response);
+//     return response;
+//   }
+// );
+
 //advanced search an employee
 export const advancedSearchEmployee = createAsyncThunk(
   "searchEmployee/fetch",
   async (entity: SearchInterface) => {
-    const requestUrl = `http://localhost:5000/employee?firstname=${entity.firstname}&lastname=${entity.lastname}&afm=${entity.afm}`;
-    const response = await axios.get(requestUrl);
-    console.log(response);
-    return response;
-  }
-);
-
-//advanced search an employee
-export const advancedSearchEmployeetest = createAsyncThunk(
-  "searchEmployee/fetch",
-  async (entity: SearchInterface) => {
-    const requestUrl = `http://localhost:5000/employee?afm=${entity.afm}`;
-    const response = await axios.get(requestUrl);
-    return response;
+    if (entity.afm) {
+      const requestUrl = `http://localhost:5000/employee?afm=${entity.afm}`;
+      const response = await axios.get(requestUrl);
+      return response;
+    }
   }
 );
 //create employee
